@@ -1,0 +1,5 @@
+#!/bin/bash
+cd <%= scope.lookupvar('::gitolite::base') %>/tmp/gitolite-admin
+git add -A
+git commit -m "puppet update"
+gl-admin-push

@@ -1,0 +1,50 @@
+#!/bin/bash
+while read oldrev newrev refname
+do
+  unset GIT_DIR
+  REPO="/var/lib/gitolite/repositories/<%= name %>.git"
+  BRANCH=`echo $refname | sed -n 's/^refs\/heads\///p'`
+
+<% if name == "puppet" -%>
+  BRANCH_DIR="/etc/puppet/environments"
+<% elsif name == "manifests" -%>
+  BRANCH_DIR="/etc/puppet-manifests/"
+<% else -%>
+  BRANCH_DIR="/tmp/unknown"
+<% end -%>
+
+  # Ignore tmp branches - they're not authed for deployment
+  REGEX="^tmp"
+  if [[ $BRANCH =~ $REGEX ]]; then
+    echo "Matched branch starting with tmp"
+    echo "No puppet action taken"
+    exit 0
+  fi
+
+  if [ "$newrev" -eq 0 ] 2> /dev/null ; then
+    # branch is being deleted
+    echo "Deleting remote branch $BRANCH_DIR/$BRANCH"
+    cd $BRANCH_DIR && sudo -u puppet rm -rf $BRANCH
+  else
+    # branch is being updated
+    if [ -d "$BRANCH_DIR/$BRANCH" ] ; then
+      echo "Updating remote branch $BRANCH_DIR/$BRANCH"
+      cd $BRANCH_DIR/$BRANCH
+      sudo -u puppet git fetch origin
+      sudo -u puppet git reset --hard origin/$BRANCH
+    else
+      echo "Creating remote branch $BRANCH_DIR/$BRANCH"
+      sudo -u puppet mkdir -p $BRANCH_DIR && cd $BRANCH_DIR
+      sudo -u puppet git clone $REPO $BRANCH && cd $BRANCH
+      sudo -u puppet git checkout -b $BRANCH origin/$BRANCH
+    fi
+<% unless has_variable?("devel") and devel == "true" -%>
+    # It's not a delete, so we can announce it if it's master
+    if [[ $BRANCH == "master" ]]; then
+      MESSAGE=`git log -1 HEAD $BRANCH --pretty=format:%s`
+      USER=`git log -1 HEAD $BRANCH --pretty=format:%an`
+      echo "#etvops Git:[<%= name %>][$USER]:[$BRANCH]:$MESSAGE" | nc -w 1 quassel 5050
+    fi
+<% end -%>
+  fi
+done
