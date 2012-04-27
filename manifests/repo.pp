@@ -1,26 +1,26 @@
 define gitolite::repo (
-  $authfile,
-  $keydir
+  $auth,
+  $keys
 ) {
 
-  file { "$gitolite::base/tmp/gitolite-admin/conf/auto/$name.conf":
+  file { "$gitolite::base/tmp/gitolite-admin/conf/auto/${name}.conf":
     ensure  => present,
     mode    => 0644,
     owner   => "$gitolite::user",
     group   => "$gitolite::group",
-    source  => "$authfile",
+    source  => "$auth",
     require => Exec["Clone admin"],
     notify  => Exec["Update admin"]
   }
 
-  file { "$gitolite::base/tmp/gitolite-admin/keydir/$name-keys":
+  file { "$gitolite::base/tmp/gitolite-admin/keydir/${name}-keys":
     ensure  => directory,
     recurse => true,
     purge   => true,
     mode    => 0644,
     owner   => "$gitolite::user",
     group   => "$gitolite::group",
-    source  => "$keydir",
+    source  => "$keys",
     require => Exec["Clone admin"],
     notify  => Exec["Update admin"]
   }

@@ -70,8 +70,8 @@ class gitolite::config {
 
   # Create the base repo from the user values
   gitolite::repo { 'admin':
-    authfile => "$gitolite::authfile",
-    keydir   => "$gitolite::keydir",
+    auth => "$gitolite::authfile",
+    keys => "$gitolite::keydir",
   }
 
 }

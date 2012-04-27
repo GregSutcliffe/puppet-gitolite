@@ -1,6 +1,6 @@
 class gitolite (
-  $authfile = 'puppet:///modules/test/admin.conf',
-  $keydir   = 'puppet:///modules/test/admin-keys',
+  $authfile = 'puppet:///modules/gitolite/admin.conf',
+  $keydir   = 'puppet:///modules/gitolite/admin-keys',
   $base     = $gitolite::params::base,
   $package  = $gitolite::params::package,
   $user     = $gitolite::params::user,
