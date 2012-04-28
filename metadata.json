@@ -1,0 +1,42 @@
+{
+  "types": [
+
+  ],
+  "summary": "Gitolite Module",
+  "project_page": "https://github.com/GregSutcliffe/puppet-gitolite",
+  "author": "Greg Sutcliffe",
+  "source": "https://github.com/GregSutcliffe/puppet-gitolite",
+  "dependencies": [
+    {
+      "name": "puppetlabs/git"
+    }
+  ],
+  "checksums": {
+    "manifests/params.pp": "09bd0691b230a53dc04655178b621b55",
+    "files/gitolite.src.tgz": "21d355273fffcb93717bda17e7ffb2fa",
+    "tests/files/admin-keys/admin.pub": "eeaab1839a38e84bbcefd649964391a1",
+    "tests/files/admin.conf": "f8076c6489de86b612df43cd0bc9085b",
+    "spec/spec_helper.rb": "ca19ec4f451ebc7fdb035b52eae6e909",
+    "templates/admin-update.sh.erb": "f654e10d79bfa5eae5d6e0211508fdf0",
+    "tests/files/puppet.conf": "a4fb09ac15dd68b1ebfff221d952f289",
+    "tests/files/puppet-keys/gsutcliffe.pub": "3ae81a564fc2761ef78af77db6a9d1fb",
+    "files/gitolite.conf": "19c5ebab91c057a4b7c5f391877731f2",
+    "manifests/config.pp": "770eb6f27d88dfc2ab4ddf2d252d5e70",
+    "README.md": "e33a79ebde5bdcb7a6c263cc465194f4",
+    "tests/files/external.conf": "8082fc3ae34eda43113358d003350aad",
+    "templates/post-hook": "3c074eb55278eccbde575dd9aceba6b1",
+    "manifests/repo.pp": "14b9fef07000ae685d237db749212a02",
+    "files/gitolite-rc": "af8683c6a8ad7ffdcfdee28f401c5e02",
+    "tests/manifests/init.pp": "6175eb09d71eb77b29091746db7cd8ec",
+    "TODO": "d41d8cd98f00b204e9800998ecf8427e",
+    "manifests/install.pp": "ebd86a976b6f990bd0110e2edbd91b55",
+    "metadata.json": "d34d0b70aba36510fbc2df4e667479ef",
+    "spec/spec.opts": "a600ded995d948e393fbe2320ba8e51c",
+    "manifests/init.pp": "ae3e256dea0c7c9bc985177418996a17",
+    "Modulefile": "4c03b2f2111b78256849c26292744922"
+  },
+  "license": "GPL3",
+  "version": "1.0.0",
+  "name": "gwmngilfen-gitolite",
+  "description": "Installs, configures and maintains Gitolite and the associated config & SSH keys"
+}

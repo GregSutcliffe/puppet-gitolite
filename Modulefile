@@ -1,0 +1,10 @@
+name    'gwmngilfen-gitolite'
+version '1.0.0'
+source 'https://github.com/GregSutcliffe/puppet-gitolite'
+author 'Greg Sutcliffe'
+license 'GPL3'
+summary 'Gitolite Module'
+description 'Installs, configures and maintains Gitolite and the associated config & SSH keys'
+project_page 'https://github.com/GregSutcliffe/puppet-gitolite'
+
+dependency 'puppetlabs/git'

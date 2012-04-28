@@ -1,6 +1,8 @@
 # Gitolite Puppet Module
 
-Puppet module for configuring the Git auth system, Gitolite (http://sitaramc.github.com/gitolite)
+Puppet module for configuring the Git auth system, Gitolite (http://sitaramc.github.com/gitolite). This not only installs Gitolite, but allows configuration of Gitolite from Puppet itself.
+
+This is useful if you already have your SSH keys in Puppet (eg. for user account creation), as you can configure both users, their SSH access rights, and their Git access rights, all from Puppet
 
 # Dependencies
 
@@ -40,7 +42,11 @@ For real repositories (i.e anything other than `gitolite-admin.git`) use the cus
       keydir   => 'puppet:///modules/test/puppet-keys',
     }
 
-See `test/*` for examples of the config file and keys directory.
+See `tests/*` for examples of the config file and keys directory.
+
+# TODO
+
+* Don't include the src.tgz in the module (tiny though it is)
 
 # Contributing
 
