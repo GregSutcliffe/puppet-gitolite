@@ -1,7 +1,7 @@
 class gitolite::params {
 
   case $::operatingsystem {
-    'debian': {
+    debian,Ubuntu: {
       $package = "gitolite"
     }
     default: {

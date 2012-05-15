@@ -1,6 +1,6 @@
 define gitolite::repo (
-  $auth,
-  $keys
+  $authfile,
+  $keydir
 ) {
 
   file { "$gitolite::base/tmp/gitolite-admin/conf/auto/${name}.conf":
