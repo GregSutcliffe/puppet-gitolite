@@ -20,7 +20,21 @@ class gitolite::install {
     mode    => 0755,
     owner   => "$gitolite::user",
     group   => "$gitolite::group",
+    require => [
+       User[$gitolite::user],
+       Group[$gitolite::group],
+    ]
   }
+
+  file {"$gitolite::base/.gitconfig":
+     ensure  => file,
+     mode    => 0644,
+     owner   => "$gitolite::user",
+     group   => "$gitolite::group",
+     content => template('gitolite/gitconfig.erb'),
+     require => File[$gitolite::base],
+  }
+
 
   file { "$gitolite::base/gitolite.src.tgz":
     ensure => present,
