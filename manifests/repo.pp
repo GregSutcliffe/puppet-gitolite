@@ -8,7 +8,7 @@ define gitolite::repo (
     mode    => 0644,
     owner   => "$gitolite::user",
     group   => "$gitolite::group",
-    source  => "$auth",
+    source  => "$authfile",
     require => Exec["Clone admin"],
     notify  => Exec["Update admin"]
   }
@@ -20,7 +20,7 @@ define gitolite::repo (
     mode    => 0644,
     owner   => "$gitolite::user",
     group   => "$gitolite::group",
-    source  => "$keys",
+    source  => "$keydir",
     require => Exec["Clone admin"],
     notify  => Exec["Update admin"]
   }
