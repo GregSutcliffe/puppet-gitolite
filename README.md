@@ -4,6 +4,8 @@ Puppet module for configuring the Git auth system, Gitolite (http://sitaramc.git
 
 This is useful if you already have your SSH keys in Puppet (eg. for user account creation), as you can configure both users, their SSH access rights, and their Git access rights, all from Puppet
 
+This module is for Gitolite2 - Gitolite3 is pending.
+
 # Dependencies
 
 * Git (http://github.com/theforeman/puppet-git)
