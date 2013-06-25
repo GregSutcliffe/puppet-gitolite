@@ -1,5 +1,5 @@
 name    'gwmngilfen-gitolite'
-version '1.0.1'
+version '1.0.2'
 source 'https://github.com/GregSutcliffe/puppet-gitolite'
 author 'Greg Sutcliffe'
 license 'GPL3'
