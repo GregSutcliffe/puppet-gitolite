@@ -28,9 +28,9 @@ If you want to supply your own config/keys to the `gitolite-admin.git` repositor
 By default, gitolite is installed to '/var/lib/gitolite', with a user & group of 'gitolite'. This is configurable:
 
     class { 'gitolite':
-      base     = "/etc/gitolite"
-      user     = "git"
-      group    = "git"
+      base     => "/etc/gitolite",
+      user     => "git",
+      group    => "git",
     }
 
 # Adding more repositories

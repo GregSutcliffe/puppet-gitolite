@@ -4,16 +4,16 @@ class gitolite::config {
   file { "$gitolite::base/.gitolite.rc":
     ensure  => present,
     mode    => 0660,
-    owner   => "gitolite",
-    group   => "gitolite",
+    owner   => "$gitolite::user",
+    group   => "$gitolite::group",
     source  => "puppet:///modules/gitolite/gitolite-rc",
   }
 
   file { "$gitolite::base/admin-update.sh":
     ensure => present,
     mode    => 0770,
-    owner   => "gitolite",
-    group   => "gitolite",
+    owner   => "$gitolite::user",
+    group   => "$gitolite::group",
     content => template('gitolite/admin-update.sh.erb'),
   }
 
